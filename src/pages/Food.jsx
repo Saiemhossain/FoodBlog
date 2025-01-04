@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable no-unused-vars */
-import FoodCard from '../components/Food/foodCard';
+import FoodCard from '../components/food/FoodCard';
 import useFetch from '../hooks/useFetch';
 
 export default function Food() {
