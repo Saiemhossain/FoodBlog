@@ -1,20 +1,20 @@
 // import food from "../../assets/food.jpg"
 // import food1 from "../../assets/food1.jpg"
 // import food2 from "../../assets/food2.jpg"
-import FoodCard from '../food/foodCard';
+
+import FoodCard from '../food/FoodCard';
 import useFetch from './../../hooks/useFetch';
 
-
-
 export default function Food() {
+  const { data, loading, error } = useFetch(
+    `${import.meta.env.VITE_APP_URL}/api/foods?populate=*`
+  );
 
-  const { data, loading, error } = useFetch(`${import.meta.env.VITE_APP_URL}/api/foods?populate=*`)
-  
-  if (loading){
-    return <h2>loading...</h2>
+  if (loading) {
+    return <h2>loading...</h2>;
   }
-  if (error){
-    return <h2>something went wrong</h2>
+  if (error) {
+    return <h2>something went wrong</h2>;
   }
 
   return (
@@ -50,12 +50,12 @@ export default function Food() {
             </p>
           </div> */}
 
-          {
-            data.map((food) => <FoodCard key={food.documentId} food={food} /> )
-          }
+          {data.map(food => (
+           <FoodCard key={food.documentId} food={food} /> 
+          
+          ))}
         </div>
       </div>
     </>
   );
 }
-
